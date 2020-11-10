@@ -27,6 +27,16 @@ To start with our project, we will setup a new repository with the `igniteui-cli
 
 `ig new`
 
-## Front-end 
+And then we follow the wizard by choosing the Angular framework and the Ignite UI for Angular project template. Choose custom styles.
 
 ## Back-end
+
+We will kill two birds with one stone in this step. We will add SSR (server-side rendering) and a node express server with API endpoints.
+
+`ng add @nguniversal/express-engine`
+
+Then lets run it to test:
+
+`npm run dev:ssr`
+
+## Front-end 
