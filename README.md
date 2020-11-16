@@ -4,8 +4,7 @@ In this workshop, we will start from zero (no repo) and we will finish with an A
 
  1. [Node.js](https://nodejs.org/en/)
  2. Angular CLI `npm i -g @angular/cli`
- 3. Ignite UI CLI Schematics `npm i -g @igniteui/angular-schematics` 
-    3.1. Optional Ignite UI CLI `npm i -g igniteui-cli`
+ 3. Ignite UI CLI Schematics `npm i -g @igniteui/angular-schematics`
  4. [Visual Studio Code](https://code.visualstudio.com/) 
 
 From this point onwards we start the workshop. Steps we will take in this workshop.

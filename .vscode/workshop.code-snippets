@@ -1,0 +1,168 @@
+{
+	// https://code.visualstudio.com/docs/editor/userdefinedsnippets
+	// Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"scope": "typescript",
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+	"Orders Data": {
+		"scope": "typescript",
+		"prefix": "orders-data",
+		"body": [
+			"let ordersStore: { value: Order []};",
+			"const getOrdersData =  async () => {",
+			"  if (!ordersStore) {",
+			"    const response = await fetch('https://services.odata.org/V3/Northwind/Northwind.svc/Orders?\\$format=json');",
+			"    ordersStore = await response.json();",
+			"  }",
+			"  return ordersStore;",
+			"};"
+		]
+	},
+	"Server API get/delete": {
+		"scope": "typescript",
+		"prefix": "get-delete",
+		"body": [
+			"server.${1|get,delete|}('/api/orders${0:/:id}', async (req, res) => {",
+			"  const data = await getOrdersData();",
+			"  res.${2|json,status|}(${3|data,204|});",
+			"});"
+		]
+	},
+	"Server API post/put": {
+		"scope": "typescript",
+		"prefix": "post-put",
+		"body": [
+			"server.${1|post,put|}('/api/orders', express.json(), async (req, res) => {",
+			"  const data = await getOrdersData();",
+			"  const ${2:order} = req.body;",
+			"  res.status(${3:20x});",
+			"});"
+		]
+	},
+	"Server shims": {
+		"scope": "typescript",
+		"prefix": "shims",
+		"body": [
+			"import * as domino from 'domino';",
+			"import { readFileSync } from 'fs';",
+			"import { join } from 'path';",
+			"import { environment } from 'src/environments/environment';",
+			"",
+			"const template = readFileSync(join(process.cwd(), environment.distFolder, 'index.html'), 'utf-8');",
+			"const win = domino.createWindow(template);",
+			"",
+			"(global as any).window = win;",
+			"(global as any).document = win.document;",
+			"$0"
+		]
+	},
+	"Service method": {
+		"scope": "typescript",
+		"prefix": "service-method",
+		"body": [
+			"public ${1|get,add,update,delete|}Order(${4| ,order: Order,id: number|}): Observable<${3:Order}> {",
+			"  return this.http.${2|get,post,put,delete|}<${3:Order}>(environment.ordersEndpoint$0)",
+			"    .pipe(",
+			"      catchError(this.handleError)",
+			"    );",
+			"}"
+		]
+	},
+	"Orders model": {
+		"scope": "typescript",
+		"prefix": "model-orders",
+		"body": [
+			"export interface Order {",
+			"  OrderID: number;",
+			"  CustomerID: string;",
+			"  EmployeeID: number;",
+			"  OrderDate: Date;",
+			"  RequiredDate: Date;",
+			"  ShippedDate: Date;",
+			"  ShipVia: number;",
+			"  Freight: number;",
+			"  ShipName: string;",
+			"  ShipAddress: string;",
+			"  ShipCity: string;",
+			"  ShipPostalCode: string;",
+			"  ShipCountry: string;",
+			"}"
+		],
+	},
+	"Customer model": {
+		"scope": "typescript",
+		"prefix": "model-customer",
+		"body": [
+			"export interface Customer {",
+			"  CustomerID: string;",
+			"  CompanyName: string;",
+			"  ContactName: string;",
+			"  ContactTitle: string;",
+			"  Address: string;",
+			"  City: string;",
+			"  Region: string;",
+			"  PostalCode: string;",
+			"  Country: string;",
+			"  Phone: string;",
+			"  Fax: string;",
+			"}"
+		]
+	},
+	"Companies Data API": {
+		"scope": "typescript",
+		"prefix": "companies-data",
+		"body": [
+			"//#region Companies",
+			"let companyStore: { value: Customer [] };",
+			"const companyStockStore: { value: {}[] } = { value: [] };",
+			"",
+			"const getCustomersData =  async () => {",
+			"  if (!companyStore) {",
+			"    const response = await fetch('https://services.odata.org/V3/Northwind/Northwind.svc/Customers?\\$format=json');",
+			"    companyStore = await response.json();",
+			"  }",
+			"  return companyStore;",
+			"};",
+			"",
+			"server.get('/api/companies', async (req, res) => {",
+			"  const companies = await getCustomersData();",
+			"  res.json(companies);",
+			"});",
+			"",
+			"server.get('/api/companies/stock', async (req, res) => {",
+			"  if (!companyStockStore.value.length) {",
+			"    const companies = await getCustomersData();",
+			"    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];",
+			"    companies.value.forEach(c => {",
+			"      companyStockStore.value.push(",
+			"        months.map(month => ({ month, companyId: c.CustomerID, [c.CompanyName]: faker.random.number({min: 50, max: 150}) }))",
+			"      );",
+			"    });",
+			"  }",
+			"  res.json(companyStockStore);",
+			"});",
+			"//#endregion Companies"
+		]
+	},
+	"Company stock model": {
+		"scope": "typescript",
+		"prefix": "model-stock",
+		"body": [
+			"export interface CompanyStock {",
+			"  month: string;",
+			"  companyId: string;",
+			"}"
+		]
+	}
+}
