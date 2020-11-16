@@ -100,6 +100,28 @@
 			"}"
 		],
 	},
+	"IgxGrid Columns": {
+		"scope": "html",
+		"prefix": "grid-columns",
+		"body": [
+			"<igx-column field=\"OrderID\" [editable]=\"false\"></igx-column>",
+			"<igx-column field=\"CustomerID\" header=\"Customer ID\"  width=\"150px\" [sortable]=\"true\" [filterable]=\"true\" [editable]=\"true\" [movable]=\"true\" [pinned]=\"true\">",
+			"</igx-column>",
+			"<igx-column field=\"ShipCountry\" header=\"Ship Country\" width=\"140px\" [sortable]=\"true\" [filterable]=\"true\" [editable]=\"true\" [movable]=\"true\" >",
+			"</igx-column>",
+			"<igx-column field=\"ShipCity\" header=\"Ship City\" width=\"110px\" [sortable]=\"true\" [filterable]=\"true\" [editable]=\"true\" [movable]=\"true\" >",
+			"</igx-column>",
+			"<igx-column field=\"OrderDate\" header=\"Order Date\" width=\"180px\" dataType=\"date\" [pipeArgs]=\"{ format: 'MMM d, y, h:mm a'}\" [sortable]=\"true\" [filterable]=\"true\" [editable]=\"true\" [movable]=\"true\">",
+			"</igx-column>",
+			"<igx-column field=\"ShippedDate\" header=\"Shipped Date\" width=\"180px\" dataType=\"date\" [sortable]=\"true\" [filterable]=\"true\" [editable]=\"true\" [movable]=\"true\">",
+			"</igx-column>",
+			"<igx-column header=\"Shipped\" width=\"140px\" dataType=\"boolean\" [sortable]=\"true\" [filterable]=\"true\" [movable]=\"true\">",
+			"  <ng-template igxCell let-cell=\"cell\">",
+			"    <igx-checkbox [checked]=\"!!cell.rowData.ShippedDate\" disabled></igx-checkbox>",
+			"  </ng-template>",
+			"</igx-column>",
+		]
+	},
 	"Customer model": {
 		"scope": "typescript",
 		"prefix": "model-customer",
