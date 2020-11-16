@@ -88,3 +88,12 @@ Let's add a chart view to our application.
 `ng g @igniteui/angular-schematics:c`
 
 Let's add some stuff to `server.shim`.
+
+Add the chart `IgxLegendModule` and then introduce `<igx-legend>`
+
+Create a new customers view bound to the oData customers service. The view contains a `customers-grid` component, and the chart we already added to the project.
+
+Let's refactor the chart into a separate component with just the chart and the legend. We will still control the chart type from the parent view.
+
+The chart and the grid will be part of the new `customers` component and will interact together.
+
