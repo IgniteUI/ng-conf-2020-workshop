@@ -1,4 +1,5 @@
 import 'zone.js/dist/zone-node';
+import './server.shims';
 
 import { ngExpressEngine } from '@nguniversal/express-engine';
 import * as express from 'express';

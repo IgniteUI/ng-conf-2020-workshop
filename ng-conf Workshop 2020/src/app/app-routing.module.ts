@@ -7,6 +7,7 @@ import { UncaughtErrorComponent } from './error-routing/error/uncaught-error.com
 import { ErrorRoutingModule } from './error-routing/error-routing.module';
 import { OrdersV1Component } from './orders-v1/orders-v1.component';
 import { OrdersComponent } from './orders/orders.component';
+import { CompanyStocksComponent } from './company-stocks/company-stocks.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -14,6 +15,7 @@ export const routes: Routes = [
   { path: 'orders-v1', component: OrdersV1Component, data: { text: 'Orders V1' } },
   { path: 'error', component: UncaughtErrorComponent },
   { path: 'orders', component: OrdersComponent, data: { text: 'Orders' } },
+  { path: 'company-stocks', component: CompanyStocksComponent, data: { text: 'Company Stocks' } },
   { path: '**', component: PageNotFoundComponent } // must always be last
 ];
 

@@ -11,13 +11,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthenticationModule, ExternalAuthService } from './authentication';
 import { OrdersV1Component } from './orders-v1/orders-v1.component';
 import { OrdersComponent } from './orders/orders.component';
+import { CompanyStocksComponent } from './company-stocks/company-stocks.component';
+import { IgxCategoryChartModule } from 'igniteui-angular-charts';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     OrdersV1Component,
-    OrdersComponent
+    OrdersComponent,
+    CompanyStocksComponent
   ],
   imports: [
     FormsModule,
@@ -34,7 +37,8 @@ import { OrdersComponent } from './orders/orders.component';
     IgxGridModule,
     IgxCheckboxModule,
     IgxDatePickerModule,
-    IgxActionStripModule
+    IgxActionStripModule,
+    IgxCategoryChartModule
   ],
   providers: [],
   bootstrap: [AppComponent]

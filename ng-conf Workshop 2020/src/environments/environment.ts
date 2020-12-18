@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  ordersEndpoint: 'http://localhost:4200/api/orders'
+  ordersEndpoint: 'http://localhost:4200/api/orders',
+  distFolder: '/dist/ng-conf-workshop-2020/browser'
 };
 
 /*
