@@ -12,11 +12,13 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthenticationModule, ExternalAuthService } from './authentication';
+import { OrdersV1Component } from './orders-v1/orders-v1.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    OrdersV1Component
   ],
   imports: [
     FormsModule,

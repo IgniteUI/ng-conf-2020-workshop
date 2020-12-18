@@ -1,0 +1,16 @@
+
+<div class="table-wrapper">
+  <table>
+    <th *ngFor="let pair of orders[0] | keyvalue"> {{ pair.key }} </th>
+    <tr *ngFor="let order of orders">
+      <td *ngFor="let prop of order | keyvalue">
+        <span *ngIf="prop.key === 'OrderDate' else default">
+            {{ prop.value | date:'MMM d, y, h:m a' }}
+        </span>
+        <ng-template #default> {{ prop.value }} </ng-template>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<button (click)="addNew()">Add New</button>
