@@ -1,0 +1,36 @@
+<p>IgxGrid with optional features like sorting, filtering, editing, etc.<br />
+You can read more about configuring the igx-grid component in the
+<a href="https://github.com/IgniteUI/igniteui-angular/blob/master/projects/igniteui-angular/src/lib/grids/README.md" target="_blank">README</a> or the
+<a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/grid/grid" target="_blank">official documentation</a>.</p>
+<p>Active Features:  <a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/grid_Sorting.html" target="_blank">Sorting</a>, <a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/grid_Filtering.html" target="_blank">Filtering</a>, <a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/grid_row_editing.html" target="_blank">Row Editing</a>, <a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/grid_selection.html" target="_blank">Row Selection</a>, <a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/grid_Paging.html" target="_blank">Paging</a>, <a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/grid_column_pinning.html" target="_blank">Column Pinning</a>, <a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/grid_column_moving.html" target="_blank">Column Moving</a>, <a href="https://www.infragistics.com/products/ignite-ui-angular/angular/components/grid_column_hiding.html" target="_blank">Column Hiding</a></p>
+<igx-grid #grid1 [data]="orders" [primaryKey]="'OrderID'" width="900px" height="550px"
+    [allowFiltering]="true" [allowFiltering]="true" [rowEditable]="true"
+    rowSelection="multiple" [paging]="true"
+    (onRowAdded)="addNew($event)">
+  <igx-column field="OrderID" [editable]="false"></igx-column>
+  <igx-column field="CustomerID" header="Customer ID"  width="150px" [sortable]="true" [filterable]="true" [editable]="true" [movable]="true" [pinned]="true">
+  </igx-column>
+  <igx-column field="ShipCountry" header="Ship Country" width="140px" [sortable]="true" [filterable]="true" [editable]="true" [movable]="true" >
+  </igx-column>
+  <igx-column field="ShipCity" header="Ship City" width="110px" [sortable]="true" [filterable]="true" [editable]="true" [movable]="true" >
+  </igx-column>
+  <igx-column field="OrderDate" header="Order Date" width="180px" dataType="date" [pipeArgs]="{ format: 'MMM d, y, h:mm a'}" [sortable]="true" [filterable]="true" [editable]="true" [movable]="true">
+  </igx-column>
+  <igx-column field="ShippedDate" header="Shipped Date" width="180px" dataType="date" [sortable]="true" [filterable]="true" [editable]="true" [movable]="true">
+  </igx-column>
+  <igx-column header="Shipped" width="140px" dataType="boolean" [sortable]="true" [filterable]="true" [movable]="true">
+    <ng-template igxCell let-cell="cell">
+      <igx-checkbox [checked]="!!cell.rowData.ShippedDate" disabled></igx-checkbox>
+    </ng-template>
+  </igx-column>
+  <igx-grid-toolbar>
+    <igx-grid-toolbar-title>Orders</igx-grid-toolbar-title>
+    <igx-grid-toolbar-actions>
+      <igx-grid-toolbar-pinning></igx-grid-toolbar-pinning>
+      <igx-grid-toolbar-hiding></igx-grid-toolbar-hiding>
+    </igx-grid-toolbar-actions>
+  </igx-grid-toolbar>
+  <igx-action-strip>
+    <igx-grid-editing-actions [addRow]="true"></igx-grid-editing-actions>
+  </igx-action-strip>
+</igx-grid>
