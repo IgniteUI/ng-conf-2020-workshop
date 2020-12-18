@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule, HammerModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TransferHttpCacheModule } from '@nguniversal/common';
 
 import { IgxLayoutModule, IgxRippleModule, IgxNavigationDrawerModule, IgxNavbarModule, IgxGridModule, IgxCheckboxModule, IgxDatePickerModule, IgxActionStripModule } from 'igniteui-angular';
 
@@ -27,6 +28,7 @@ import { IgxCategoryChartModule } from 'igniteui-angular-charts';
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     HammerModule,
     BrowserAnimationsModule,
+    TransferHttpCacheModule,
     // NOTE: `AuthenticationModule` defines child routes, must be imported before root `AppRoutingModule`
     AuthenticationModule,
     AppRoutingModule,
