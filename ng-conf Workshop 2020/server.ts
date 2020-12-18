@@ -10,6 +10,8 @@ import { APP_BASE_HREF } from '@angular/common';
 import { existsSync } from 'fs';
 import { Order } from 'src/app/models/order';
 import fetch from 'node-fetch';
+import * as faker from 'faker';
+import { Customer } from 'src/app/models/customer';
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
@@ -94,6 +96,37 @@ export function app(): express.Express {
   });
 
   //#endregion Orders
+
+  //#region Companies
+  let companyStore: { value: Customer[] };
+  const companyStockStore: { value: {}[] } = { value: [] };
+
+  const getCustomersData =  async () => {
+    if (!companyStore) {
+      const response = await fetch('https://services.odata.org/V3/Northwind/Northwind.svc/Customers?$format=json');
+      companyStore = await response.json();
+    }
+    return companyStore;
+  };
+
+  server.get('/api/companies', async (req, res) => {
+    const companies = await getCustomersData();
+    res.json(companies);
+  });
+
+  server.get('/api/companies/stock', async (req, res) => {
+    if (!companyStockStore.value.length) {
+      const companies = await getCustomersData();
+      const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+      companies.value.forEach(c => {
+        companyStockStore.value.push(
+          months.map(month => ({ month, companyId: c.CustomerID, [c.CompanyName]: faker.random.number({min: 50, max: 150}) }))
+        );
+      });
+    }
+    res.json(companyStockStore);
+  });
+  //#endregion Companies
 
   // All regular routes use the Universal engine
   server.get('*', (req, res) => {
