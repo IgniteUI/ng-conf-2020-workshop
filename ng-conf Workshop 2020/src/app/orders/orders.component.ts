@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IRowDataEventArgs } from 'igniteui-angular';
+import { IGridEditEventArgs, IRowDataEventArgs } from 'igniteui-angular';
 import { Order } from '../models/order';
 import { OrdersService } from '../services/orders.service';
 
@@ -26,5 +26,21 @@ export class OrdersComponent implements OnInit {
       // replace auto-added record with received update
       this.orders.splice(index, 1, x);
     });
+  }
+
+  /**
+   * deleteOrder
+   */
+  public deleteOrder(args: IRowDataEventArgs) {
+    const order = args.data as Order;
+    this.ordersService.deleteOrder(order.OrderID).subscribe();
+  }
+
+  /**
+   * editOrder
+   */
+  public editOrder(args: IGridEditEventArgs) {
+    if (args.isAddRow) { return; }
+    this.ordersService.updateOrder(args.rowData as Order).subscribe(x => x);
   }
 }

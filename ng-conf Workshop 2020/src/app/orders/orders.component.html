@@ -6,7 +6,9 @@ You can read more about configuring the igx-grid component in the
 <igx-grid #grid1 [data]="orders" [primaryKey]="'OrderID'" width="900px" height="550px"
     [allowFiltering]="true" [allowFiltering]="true" [rowEditable]="true"
     rowSelection="multiple" [paging]="true"
-    (onRowAdded)="addNew($event)">
+    (onRowAdded)="addNew($event)"
+    (onRowDeleted)="deleteOrder($event)"
+    (rowEdit)="editOrder($event)">
   <igx-column field="OrderID" [editable]="false"></igx-column>
   <igx-column field="CustomerID" header="Customer ID"  width="150px" [sortable]="true" [filterable]="true" [editable]="true" [movable]="true" [pinned]="true">
   </igx-column>
