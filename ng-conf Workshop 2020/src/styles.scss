@@ -10,10 +10,31 @@ $secondary: #ce5712 !default;
 
 $app-palette: igx-palette($primary, $secondary);
 
-/* autoprefixer grid: on */
+$include: (igx-navbar,
+           igx-ripple,
+           igx-icon,
+           igx-overlay,
+           igx-drop-down,
+           igx-button,
+           igx-dialog,
+           igx-input-group,
+           igx-checkbox,
+           igx-nav-drawer,
+           igx-grid,
+           igx-grid-toolbar,
+           igx-paginator,
+           igx-column-actions,
+           igx-banner,
+           igx-chip,
+           igx-snackbar,
+           igx-action-strip);
 
+/* autoprefixer grid: on */
 @include igx-core();
-@include igx-theme($app-palette);
+@include igx-theme(
+  $app-palette,
+  $exclude: map-keys(map-remove($components, $include...),)
+);
 
 
 html, body {
