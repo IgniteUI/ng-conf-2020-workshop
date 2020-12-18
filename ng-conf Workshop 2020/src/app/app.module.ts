@@ -20,7 +20,7 @@ import { AuthenticationModule, ExternalAuthService } from './authentication';
   ],
   imports: [
     FormsModule,
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     HammerModule,
     BrowserAnimationsModule,
     // NOTE: `AuthenticationModule` defines child routes, must be imported before root `AppRoutingModule`
