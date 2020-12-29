@@ -4,7 +4,11 @@ import { BrowserModule, HammerModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TransferHttpCacheModule } from '@nguniversal/common';
 
-import { IgxLayoutModule, IgxRippleModule, IgxNavigationDrawerModule, IgxNavbarModule, IgxGridModule, IgxCheckboxModule, IgxDatePickerModule, IgxActionStripModule } from 'igniteui-angular';
+import {
+  IgxLayoutModule, IgxRippleModule, IgxNavigationDrawerModule, IgxNavbarModule, IgxGridModule,
+  IgxCheckboxModule, IgxDatePickerModule, IgxActionStripModule
+} from 'igniteui-angular';
+import { IgxCategoryChartModule, IgxLegendModule } from 'igniteui-angular-charts';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -13,7 +17,6 @@ import { AuthenticationModule, ExternalAuthService } from './authentication';
 import { OrdersV1Component } from './orders-v1/orders-v1.component';
 import { OrdersComponent } from './orders/orders.component';
 import { CompanyStocksComponent } from './company-stocks/company-stocks.component';
-import { IgxCategoryChartModule } from 'igniteui-angular-charts';
 
 @NgModule({
   declarations: [
@@ -40,7 +43,8 @@ import { IgxCategoryChartModule } from 'igniteui-angular-charts';
     IgxCheckboxModule,
     IgxDatePickerModule,
     IgxActionStripModule,
-    IgxCategoryChartModule
+    IgxCategoryChartModule,
+    IgxLegendModule
   ],
   providers: [],
   bootstrap: [AppComponent]

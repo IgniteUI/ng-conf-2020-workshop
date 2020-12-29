@@ -14,8 +14,12 @@
     <option>Waterfall</option>
   </select>
 </div>
-<igx-category-chart height="550px" width="100%" *ngIf="isBrowser"
-    chartTitle="Population per Country (millions)"
-    [chartType]="chartType"
-    [dataSource]="data">
-</igx-category-chart>
+<div class="chart-legend-container">
+  <igx-category-chart height="750px" width="100%" *ngIf="isBrowser"
+      [legend]="legend"
+      chartTitle="Company Stocks"
+      [chartType]="chartType"
+      [dataSource]="data">
+  </igx-category-chart>
+  <igx-legend #legend></igx-legend>
+</div>

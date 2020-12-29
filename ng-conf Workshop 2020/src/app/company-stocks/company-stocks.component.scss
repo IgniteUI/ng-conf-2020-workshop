@@ -1,3 +1,9 @@
 :host {
   width: 100%;
+
+  .chart-legend-container {
+    display: grid;
+    grid-template-columns: 1fr 220px;
+    column-gap: 16px;
+  }
 }
