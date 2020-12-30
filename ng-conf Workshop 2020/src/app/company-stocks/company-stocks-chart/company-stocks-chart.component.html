@@ -1,0 +1,9 @@
+<div class="chart-legend-container">
+  <igx-category-chart height="750px" width="100%" *ngIf="isBrowser"
+      [legend]="legend"
+      chartTitle="Company Stocks"
+      [chartType]="chartType"
+      [dataSource]="data">
+  </igx-category-chart>
+  <igx-legend #legend></igx-legend>
+</div>

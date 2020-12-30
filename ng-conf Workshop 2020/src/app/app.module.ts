@@ -18,6 +18,7 @@ import { OrdersV1Component } from './orders-v1/orders-v1.component';
 import { OrdersComponent } from './orders/orders.component';
 import { CompanyStocksComponent } from './company-stocks/company-stocks.component';
 import { NotificationComponent } from './notification/notification.component';
+import { CompanyStocksChartComponent } from './company-stocks/company-stocks-chart/company-stocks-chart.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { NotificationComponent } from './notification/notification.component';
     OrdersV1Component,
     OrdersComponent,
     CompanyStocksComponent,
-    NotificationComponent
+    NotificationComponent,
+    CompanyStocksChartComponent
   ],
   imports: [
     FormsModule,
