@@ -19,6 +19,8 @@ import { OrdersComponent } from './orders/orders.component';
 import { CompanyStocksComponent } from './company-stocks/company-stocks.component';
 import { NotificationComponent } from './notification/notification.component';
 import { CompanyStocksChartComponent } from './company-stocks/company-stocks-chart/company-stocks-chart.component';
+import { CustomersComponent } from './customers/customers.component';
+import { CustomersGridComponent } from './customers/customers-grid/customers-grid.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { CompanyStocksChartComponent } from './company-stocks/company-stocks-cha
     OrdersComponent,
     CompanyStocksComponent,
     NotificationComponent,
-    CompanyStocksChartComponent
+    CompanyStocksChartComponent,
+    CustomersComponent,
+    CustomersGridComponent
   ],
   imports: [
     FormsModule,

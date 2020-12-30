@@ -1,0 +1,8 @@
+:host {
+  width: 100%;
+
+  .customer-stocks {
+    display: grid;
+    grid-row-gap: 16px;
+  }
+}
