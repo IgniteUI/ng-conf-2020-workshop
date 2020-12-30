@@ -1,16 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Order } from '../models/order';
+import { EventBusService } from './event-bus.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrdersService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private eventBus: EventBusService) { }
 
   public getOrders( ): Observable<Order[]> {
     return this.http.get<{ value: Order[]}>(environment.ordersEndpoint)
@@ -48,8 +49,9 @@ export class OrdersService {
       );
   }
 
-  handleError(handleError: any): Observable<any> {
-    // TODO :)
-    throw new Error('Method not implemented.');
+  handleError = (handleError: any) => {
+    const text = 'Something wrong happened. Try again later.';
+    this.eventBus.sendError({ text, payload: handleError });
+    return of(null);
   }
 }

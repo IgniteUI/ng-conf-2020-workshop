@@ -6,7 +6,7 @@ import { TransferHttpCacheModule } from '@nguniversal/common';
 
 import {
   IgxLayoutModule, IgxRippleModule, IgxNavigationDrawerModule, IgxNavbarModule, IgxGridModule,
-  IgxCheckboxModule, IgxDatePickerModule, IgxActionStripModule
+  IgxCheckboxModule, IgxDatePickerModule, IgxActionStripModule, IgxToastModule
 } from 'igniteui-angular';
 import { IgxCategoryChartModule, IgxLegendModule } from 'igniteui-angular-charts';
 
@@ -17,6 +17,7 @@ import { AuthenticationModule, ExternalAuthService } from './authentication';
 import { OrdersV1Component } from './orders-v1/orders-v1.component';
 import { OrdersComponent } from './orders/orders.component';
 import { CompanyStocksComponent } from './company-stocks/company-stocks.component';
+import { NotificationComponent } from './notification/notification.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { CompanyStocksComponent } from './company-stocks/company-stocks.componen
     HomeComponent,
     OrdersV1Component,
     OrdersComponent,
-    CompanyStocksComponent
+    CompanyStocksComponent,
+    NotificationComponent
   ],
   imports: [
     FormsModule,
@@ -39,6 +41,7 @@ import { CompanyStocksComponent } from './company-stocks/company-stocks.componen
     IgxNavbarModule,
     IgxLayoutModule,
     IgxRippleModule,
+    IgxToastModule,
     IgxGridModule,
     IgxCheckboxModule,
     IgxDatePickerModule,
